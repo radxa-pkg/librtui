@@ -147,7 +147,7 @@ main() {
 		source "/usr/lib/librtui/tui.sh"
 	fi
 
-	tui_start __test
+	tui_start __test "RTUI TEST"
 }
 
 main "$@"

@@ -50,12 +50,16 @@ switch_screen() {
 }
 
 tui_start() {
-	__parameter_count_check 1 "$@"
+	__parameter_count_range_check 1 2 "$@"
 	__parameter_type_check "$1" "function"
 
 	if ! infocmp "$TERM" &>/dev/null; then
 		echo "Could not find terminfo for $TERM." >&2
 		return 1
+	fi
+
+	if [[ -n "${2:-}" ]]; then
+		RTUI_DIALOG_TITLE="$2"
 	fi
 
 	register_screen "$1"
