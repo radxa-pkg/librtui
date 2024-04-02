@@ -1,0 +1,30 @@
+Source: librtui
+Maintainer: "Radxa Computer Co., Ltd" <dev@radxa.com>
+Section: libdevel
+Priority: optional
+Standards-Version: 4.6.0
+Build-Depends: debhelper (>=12~),
+               devscripts,
+               lintian,
+               dh-exec,
+               pandoc,
+               shellcheck,
+
+Package: librtui
+Architecture: all
+Section: libdevel
+Priority: optional
+Depends: whiptail,
+         ${misc:Depends},
+Description: Radxa TUI library
+ Radxa TUI library (librtui) provides an simple API to create TUI applications.
+
+Package: librtui-examples
+Architecture: all
+Section: libdevel
+Priority: optional
+Depends: librtui,
+         ${misc:Depends},
+Description: Radxa TUI library - Example
+ Radxa TUI library (librtui) provides an simple API to create TUI applications.
+ This package provides examples for librtui.
