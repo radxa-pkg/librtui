@@ -105,10 +105,6 @@ __in_array() {
 	return 1
 }
 
-log() {
-	printf "%s\n" "$*" >&2
-}
-
 __check_terminal() {
 	local devices=("/dev/stdin" "/dev/stdout" "/dev/stderr") output disable_stderr
 	for i in "${devices[@]}"; do
