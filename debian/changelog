@@ -1,3 +1,17 @@
+librtui (0.1.1) jammy; urgency=medium
+
+  [ ZHANG Yuntian ]
+  * feat: allow tui_start to configure program title
+
+  [ dependabot[bot] ]
+  * build(deps): Bump peaceiris/actions-mdbook from 1 to 2
+
+  [ CodeChenL ]
+  * fix: fix wrong install path
+  * fix: remove function log
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Tue, 23 Apr 2024 06:36:50 +0000
+
 librtui (0.1.0) jammy; urgency=medium
 
   * Initial release
