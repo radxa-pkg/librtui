@@ -139,9 +139,9 @@ main() {
 
 	local SCRIPT_DIR
 	SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-	if [[ -f "$SCRIPT_DIR/../src/tui.sh" ]]; then
+	if [[ -f "$SCRIPT_DIR/../src/lib/librtui/tui.sh" ]]; then
 		# shellcheck source=src/tui.sh
-		source "$SCRIPT_DIR/../src/tui.sh"
+		source "$SCRIPT_DIR/../src/lib/librtui/tui.sh"
 	else
 		# shellcheck source=src/tui.sh
 		source "/usr/lib/librtui/tui.sh"
