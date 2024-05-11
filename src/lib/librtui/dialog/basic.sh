@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+readonly RTUI_PALETTE_ERROR="error"
+
 RTUI_DIALOG=${RTUI_DIALOG:-"whiptail"}
 RTUI_DIALOG_TITLE=${RTUI_DIALOG_TITLE:-"RTUI"}
 
@@ -36,6 +38,19 @@ __dialog() {
 		"$@" 3>&1 1>&2 2>&3 3>&-
 }
 
+librtui_set_palette() {
+	local palette="$RTUI_DIR/../../share/librtui/"${1:-}".palette"
+
+	if [[ -z ${1:-} ]]; then
+		unset NEWT_COLORS_FILE
+	elif [[ -e "$palette" ]]; then
+		export NEWT_COLORS_FILE="$palette"
+	else
+		echo "Palette file '$1' does not exist." >&2
+		return 1
+	fi
+}
+
 show_once() {
 	__parameter_count_at_least_check 2 "$@"
 	__parameter_type_check "$2" "function"
@@ -60,9 +75,11 @@ yesno() {
 }
 
 msgbox() {
-	__parameter_count_check 1 "$@"
+	__parameter_count_range_check 1 2 "$@"
 
+	librtui_set_palette "${2:-}"
 	__dialog --msgbox "$1"
+	librtui_set_palette
 }
 
 inputbox() {
