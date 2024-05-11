@@ -10,6 +10,7 @@ __test_yesno() {
 
 __test_msgbox() {
 	msgbox "A msgbox."
+	msgbox "An error msgbox." "$RTUI_PALETTE_ERROR"
 }
 
 __test_inputbox() {

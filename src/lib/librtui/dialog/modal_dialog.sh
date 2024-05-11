@@ -6,7 +6,7 @@ color_channel_picker() {
 	if ! intensity=$(uint_inputbox "Please enter the intensity of the $channel channel:" ""); then
 		return 1
 	elif ((10#$intensity < 0)) || ((10#$intensity > 255)); then
-		msgbox "$channel channel value must be between 0 and 255. User entered '$intensity'."
+		msgbox "$channel channel value must be between 0 and 255. User entered '$intensity'." "$RTUI_PALETTE_ERROR"
 		return 1
 	fi
 	echo "$intensity"
@@ -29,7 +29,7 @@ uint_inputbox() {
 	if ! item=$(inputbox "$1" "$2"); then
 		return 1
 	elif ! ((10#$item == 10#$item)); then
-		msgbox "An unsigned integer is expected. User entered '$item'."
+		msgbox "An unsigned integer is expected. User entered '$item'." "$RTUI_PALETTE_ERROR"
 		return 1
 	fi
 	echo "$item"
