@@ -187,3 +187,8 @@ __check_terminal() {
 	done
 	echo "Unable to get terminal size!" >&2
 }
+
+__lock_on_file() {
+	exec "$1">>"$2"
+	flock "$1"
+}
