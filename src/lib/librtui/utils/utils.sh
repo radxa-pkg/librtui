@@ -105,6 +105,73 @@ __in_array() {
 	return 1
 }
 
+__printf_array() {
+	local FORMAT="$1"
+	shift
+	local ARRAY=("$@")
+
+	if [[ $FORMAT == "json" ]]; then
+		jq --compact-output --null-input '$ARGS.positional' --args -- "${ARRAY[@]}"
+	else
+		for i in "${ARRAY[@]}"; do
+			# shellcheck disable=SC2059
+			printf "$FORMAT" "$i"
+		done
+	fi
+}
+
+__array_intersect() {
+	local a=() b=()
+	while [[ $1 != "--" ]]; do
+		a+=("$1")
+		shift
+	done
+	shift
+	b=("$@")
+
+	local i j
+	for i in "${a[@]}"; do
+		for j in "${b[@]}"; do
+			if [[ $i == "$j" ]]; then
+				echo "$i"
+			fi
+		done
+	done
+}
+
+__array_remove() {
+	local array_name="$1" item="$2" old_array=() new_array=()
+	eval "old_array=( \"\${${array_name}[@]}\" )"
+	for i in "${!old_array[@]}"; do
+		if [[ $item != "${old_array[i]}" ]]; then
+			new_array+=("${old_array[i]}")
+		fi
+	done
+	eval "$array_name=( \"\${new_array[@]}\" )"
+}
+
+__request_parallel() {
+	local nproc
+	nproc=$(($(nproc)))
+
+	while (($(jobs -r | wc -l) > nproc)); do
+		sleep 0.1
+	done
+}
+
+__wait_parallel() {
+	# An error aware wait
+	# Subshell inherits set -e so they will report error code correctly
+	# https://stackoverflow.com/a/43776775
+	while true; do
+		wait -n || {
+			local code="$?"
+			([[ $code == "127" ]] && exit 0 || exit "$code")
+			break
+		}
+	done
+}
+
 __check_terminal() {
 	local devices=("/dev/stdin" "/dev/stdout" "/dev/stderr") output disable_stderr
 	for i in "${devices[@]}"; do
