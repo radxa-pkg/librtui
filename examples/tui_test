@@ -58,7 +58,11 @@ __test_checklist() {
 	checklist_add "Item 2" "ON"
 	checklist_add "Item 3" "OFF"
 	if checklist_show "Checklist"; then
-		msgbox "Offered '${RTUI_CHECKLIST_STATE_OLD[*]}', selected '${RTUI_CHECKLIST_STATE_NEW[*]}'."
+		local selection="'${RTUI_CHECKLIST_STATE_NEW[*]}'"
+		if checklist_is_selection_empty; then
+			selection="nothing"
+		fi
+		msgbox "Offered '${RTUI_CHECKLIST_STATE_OLD[*]}', selected $selection."
 	else
 		msgbox "User cancelled action."
 	fi
@@ -67,10 +71,14 @@ __test_checklist() {
 __test_radiolist() {
 	radiolist_init
 	radiolist_add "Item 1" "OFF"
-	radiolist_add "Item 2" "ON"
+	radiolist_add "Item 2" "OFF"
 	radiolist_add "Item 3" "OFF"
 	if radiolist_show "Radiolist"; then
-		msgbox "Offered '${RTUI_RADIOLIST_STATE_OLD[*]}', selected '${RTUI_RADIOLIST_STATE_NEW[*]}'."
+		local selection="'${RTUI_RADIOLIST_STATE_NEW[*]}'"
+		if radiolist_is_selection_empty; then
+			selection="nothing"
+		fi
+		msgbox "Offered '${RTUI_RADIOLIST_STATE_OLD[*]}', selected $selection."
 	else
 		msgbox "User cancelled action."
 	fi
