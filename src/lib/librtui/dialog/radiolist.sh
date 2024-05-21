@@ -60,3 +60,7 @@ radiolist_emptymsg() {
 		msgbox "$1"
 	fi
 }
+
+radiolist_is_selection_empty() {
+	((${#RTUI_RADIOLIST_STATE_NEW[@]} == 0))
+}

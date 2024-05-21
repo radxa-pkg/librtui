@@ -61,3 +61,7 @@ checklist_emptymsg() {
 		msgbox "$1"
 	fi
 }
+
+checklist_is_selection_empty() {
+	((${#RTUI_CHECKLIST_STATE_NEW[@]} == 0))
+}
