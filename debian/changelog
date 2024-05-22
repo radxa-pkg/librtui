@@ -1,3 +1,17 @@
+librtui (0.1.2) jammy; urgency=medium
+
+  [ CodeChenL ]
+  * refactor: change scr directory structure
+  * feat: add function librtui_set_palette
+  * feat: add more util function from RSDK
+
+  [ ZHANG Yuntian ]
+  * feat: add __lock_on_file
+  * feat: add selection empty helpers
+  * test: add usage of selection empty helpers
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Wed, 22 May 2024 09:08:52 +0000
+
 librtui (0.1.1) jammy; urgency=medium
 
   [ ZHANG Yuntian ]
