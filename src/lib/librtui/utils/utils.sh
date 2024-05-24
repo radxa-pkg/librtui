@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 
-readonly ERROR_REQUIRE_PARAMETER=-1
-readonly ERROR_TOO_FEW_PARAMETERS=-2
-readonly ERROR_REQUIRE_FILE=-3
-readonly ERROR_ILLEGAL_PARAMETERS=-4
-readonly ERROR_REQUIRE_TARGET=-5
+if [ -z ${ERROR_REQUIRE_PARAMETER+SET} ]; then
+	readonly ERROR_REQUIRE_PARAMETER=-1
+fi
+if [ -z ${ERROR_TOO_FEW_PARAMETERS+SET} ]; then
+	readonly ERROR_TOO_FEW_PARAMETERS=-2
+fi
+if [ -z ${ERROR_REQUIRE_FILE+SET} ]; then
+	readonly ERROR_REQUIRE_FILE=-3
+fi
+if [ -z ${ERROR_ILLEGAL_PARAMETERS+SET} ]; then
+	readonly ERROR_ILLEGAL_PARAMETERS=-4
+fi
+if [ -z ${ERROR_REQUIRE_TARGET+SET} ]; then
+	readonly ERROR_REQUIRE_TARGET=-5
+fi
 
 __require_parameter_check() {
 	if (($# == 0)); then
