@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-if [ -z ${ERROR_REQUIRE_PARAMETER+SET} ]; then
+if [[ -z ${ERROR_REQUIRE_PARAMETER+SET} ]]; then
 	readonly ERROR_REQUIRE_PARAMETER=-1
 fi
-if [ -z ${ERROR_TOO_FEW_PARAMETERS+SET} ]; then
+if [[ -z ${ERROR_TOO_FEW_PARAMETERS+SET} ]]; then
 	readonly ERROR_TOO_FEW_PARAMETERS=-2
 fi
-if [ -z ${ERROR_REQUIRE_FILE+SET} ]; then
+if [[ -z ${ERROR_REQUIRE_FILE+SET} ]]; then
 	readonly ERROR_REQUIRE_FILE=-3
 fi
-if [ -z ${ERROR_ILLEGAL_PARAMETERS+SET} ]; then
+if [[ -z ${ERROR_ILLEGAL_PARAMETERS+SET} ]]; then
 	readonly ERROR_ILLEGAL_PARAMETERS=-4
 fi
-if [ -z ${ERROR_REQUIRE_TARGET+SET} ]; then
+if [[ -z ${ERROR_REQUIRE_TARGET+SET} ]]; then
 	readonly ERROR_REQUIRE_TARGET=-5
 fi
 
