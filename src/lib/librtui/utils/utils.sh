@@ -204,16 +204,11 @@ __lock_on_file() {
 }
 
 get_real_user() {
-	# return name of the user that runs the script
-	local user=''
-
-	if [ -n "$PKEXEC_UID" ]; then
-		user="$(id -nu "$PKEXEC_UID")"
-	elif [ -n "$SUDO_USER" ]; then
-		user="$SUDO_USER"
+	if [[ -n "$PKEXEC_UID" ]]; then
+		echo "$(id -nu "$PKEXEC_UID")"
+	elif [[ -n "$SUDO_USER" ]]; then
+		echo "$SUDO_USER"
 	else
-		user="$(id -nu)"
+		echo "$USER"
 	fi
-
-	echo "$user"
 }
