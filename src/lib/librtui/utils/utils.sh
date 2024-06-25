@@ -202,3 +202,13 @@ __lock_on_file() {
 	exec "$1">>"$2"
 	flock "$1"
 }
+
+get_real_user() {
+	if [[ -n "$PKEXEC_UID" ]]; then
+		id -nu "$PKEXEC_UID"
+	elif [[ -n "$SUDO_USER" ]]; then
+		echo "$SUDO_USER"
+	else
+		echo "$USER"
+	fi
+}
