@@ -205,7 +205,7 @@ __lock_on_file() {
 
 get_real_user() {
 	if [[ -n "$PKEXEC_UID" ]]; then
-		echo "$(id -nu "$PKEXEC_UID")"
+		id -nu "$PKEXEC_UID"
 	elif [[ -n "$SUDO_USER" ]]; then
 		echo "$SUDO_USER"
 	else
