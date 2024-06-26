@@ -1,3 +1,15 @@
+librtui (0.1.4) jammy; urgency=medium
+
+  [ ZHANG Yuntian ]
+  * fix: avoid [ and use [[
+
+  [ CodeChenL ]
+  * feat: add util function get_real_user
+  * fix: close some change request
+  * fix: remove redundant echo
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Wed, 26 Jun 2024 10:59:33 +0000
+
 librtui (0.1.3) jammy; urgency=medium
 
   [ ZHANG Yuntian ]
