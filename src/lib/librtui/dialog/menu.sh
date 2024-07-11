@@ -7,6 +7,7 @@ menu_init() {
 	export RTUI_MENU=()
 	export RTUI_MENU_CALLBACK=()
 	export RTUI_MENU_SELECTED=
+	export RTUI_MENU_SELECTED_INDEX=
 }
 
 menu_add() {
@@ -49,9 +50,11 @@ menu_show() {
 	local item="0"
 	if ((${#RTUI_MENU_CALLBACK[@]} == 1)); then
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
+		RTUI_MENU_SELECTED_INDEX="$item"
 		switch_screen "${RTUI_MENU_CALLBACK[$item]}"
 	elif item="$(__dialog --menu "$1" "${RTUI_MENU[@]}")"; then
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
+		RTUI_MENU_SELECTED_INDEX="$item"
 		push_screen "${RTUI_MENU_CALLBACK[$item]}"
 	fi
 }
@@ -62,6 +65,7 @@ menu_call() {
 	local item
 	if item="$(__dialog --menu "$1" "${RTUI_MENU[@]}")"; then
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
+		RTUI_MENU_SELECTED_INDEX="$item"
 		${RTUI_MENU_CALLBACK[$item]}
 	else
 		return 1
