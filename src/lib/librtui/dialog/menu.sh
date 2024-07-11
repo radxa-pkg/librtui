@@ -56,6 +56,8 @@ menu_show() {
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
 		RTUI_MENU_SELECTED_INDEX="$item"
 		push_screen "${RTUI_MENU_CALLBACK[$item]}"
+	else
+		return 1
 	fi
 }
 
