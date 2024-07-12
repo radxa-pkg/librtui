@@ -171,15 +171,23 @@ __request_parallel() {
 
 __wait_parallel() {
 	# An error aware wait
-	# Subshell inherits set -e so they will report error code correctly
-	# https://stackoverflow.com/a/43776775
-	while true; do
-		wait -n || {
-			local code="$?"
-			([[ $code == "127" ]] && exit 0 || exit "$code")
+	# Based on example of https://stackoverflow.com/a/43776775
+	local ret
+	while ret=0; do
+		wait -n || ret=$?
+		case "$ret" in
+		0)
+			continue
+			;;
+		127)
 			break
-		}
-	done
+			;;
+		*)
+			wait
+			return "$ret"
+			;;
+		esac
+	done;
 }
 
 __check_terminal() {
@@ -199,22 +207,24 @@ __check_terminal() {
 }
 
 __lock_fd() {
-	local fd="$1" file="$2"
+	local file="$1" fd
 	exec {fd}>>"$file"
 	flock "$fd"
+	LIBRTUI_LOCK_FD="$fd"
 }
 
 __try_lock_fd() {
-	local fd="$1" file="$2"
+	local file="$1" fd
 	exec {fd}>>"$file"
 	if ! flock -n "$fd"; then
 		exec {fd}>&-
 		return 1
 	fi
+	LIBRTUI_LOCK_FD="$fd"
 }
 
 __unlock_fd() {
-	local fd="$1"
+	local fd="${1:-$LIBRTUI_LOCK_FD}"
 	flock -u "$fd"
 	exec {fd}>&-
 }
