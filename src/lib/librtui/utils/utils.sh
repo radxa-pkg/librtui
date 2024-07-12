@@ -199,8 +199,9 @@ __check_terminal() {
 }
 
 __lock_on_file() {
-	exec "$1">>"$2"
-	flock "$1"
+	local fd="$1" file="$2"
+	exec {fd}>>"$file"
+	flock "$fd"
 }
 
 get_real_user() {
