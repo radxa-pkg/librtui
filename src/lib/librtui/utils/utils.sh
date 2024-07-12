@@ -198,7 +198,7 @@ __check_terminal() {
 	echo "Unable to get terminal size!" >&2
 }
 
-__lock_on_file() {
+__lock_fd() {
 	local fd="$1" file="$2"
 	exec {fd}>>"$file"
 	flock "$fd"
