@@ -204,6 +204,21 @@ __lock_fd() {
 	flock "$fd"
 }
 
+__try_lock_fd() {
+	local fd="$1" file="$2"
+	exec {fd}>>"$file"
+	if ! flock -n "$fd"; then
+		exec {fd}>&-
+		return 1
+	fi
+}
+
+__unlock_fd() {
+	local fd="$1"
+	flock -u "$fd"
+	exec {fd}>&-
+}
+
 get_real_user() {
 	if [[ -n "$PKEXEC_UID" ]]; then
 		id -nu "$PKEXEC_UID"
