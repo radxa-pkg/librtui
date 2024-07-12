@@ -114,8 +114,38 @@ __test_color_picker() {
 	fi
 }
 
+__test_menu_select_handler() {
+	msgbox "You selected '$RTUI_MENU_SELECTED', index = $RTUI_MENU_SELECTED_INDEX."
+}
+
+__test_menu() {
+	menu_init
+	menu_add __test_menu_select_handler "A"
+	menu_add __test_menu_select_handler "B"
+	menu_add __test_menu_select_handler "C"
+	menu_show "Menu tests"
+}
+
+__test_custom_menu() {
+	while true; do
+		menu_init
+		menu_add __test_menu_select_handler "A"
+		menu_add __test_menu_select_handler "B"
+		menu_add __test_menu_select_handler "C"
+		if menu_call "Custom menu tests"; then
+			msgbox "Menu selected, and callback processed."
+		else
+			msgbox "Menu cancelled."
+			break
+		fi
+	done
+}
+
 __test() {
 	menu_init
+	menu_add __test_menu "menu"
+	menu_add __test_custom_menu "custom menu"
+	menu_add_separator
 	menu_add __test_yesno "yesno"
 	menu_add __test_msgbox "msgbox"
 	menu_add __test_inputbox "inputbox"
