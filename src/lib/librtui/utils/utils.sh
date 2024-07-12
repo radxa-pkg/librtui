@@ -218,13 +218,3 @@ __unlock_fd() {
 	flock -u "$fd"
 	exec {fd}>&-
 }
-
-get_real_user() {
-	if [[ -n "$PKEXEC_UID" ]]; then
-		id -nu "$PKEXEC_UID"
-	elif [[ -n "$SUDO_USER" ]]; then
-		echo "$SUDO_USER"
-	else
-		echo "$USER"
-	fi
-}
