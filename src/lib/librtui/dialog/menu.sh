@@ -45,7 +45,7 @@ menu_getitem() {
 }
 
 menu_show() {
-	__parameter_count_check 1 "$@"
+	__parameter_count_range_check 1 2 "$@"
 
 	local item="0"
 	if ((${#RTUI_MENU_CALLBACK[@]} == 1)); then
@@ -56,7 +56,7 @@ menu_show() {
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
 		RTUI_MENU_SELECTED_INDEX="$item"
 		push_screen "${RTUI_MENU_CALLBACK[$item]}"
-	else
+	elif [[ -n "${2:-}" ]]; then
 		return 1
 	fi
 }
