@@ -80,6 +80,13 @@ __assert_t() {
 	fi
 }
 
+__external_script_type_check() {
+	__parameter_count_check 3 "$@"
+	__assert_f "$1"
+
+	bash -c "source /usr/lib/librtui/utils/utils.sh && source '$1' && __parameter_type_check '$2' '$3'"
+}
+
 __parameter_value_check() {
 	__require_parameter_check "$@"
 
