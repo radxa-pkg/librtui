@@ -1,3 +1,20 @@
+librtui (0.1.5) jammy; urgency=medium
+
+  [ CodeChenL ]
+  * feat: menu: export RTUI_MENU_SELECTED_INDEX
+  * feat: utils: add function __external_script_type_check
+
+  [ ZHANG Yuntian ]
+  * tests: add menu related test cases
+  * fix: exec requires special variable syntax
+  * refactor: rename to __lock_fd
+  * feat: add more lock functions
+  * fix: remove get_real_user
+  * fix: __wait_parallel will wait for all jobs to finish
+  * test: add example code for parallel functions
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Wed, 31 Jul 2024 07:24:14 +0000
+
 librtui (0.1.4) jammy; urgency=medium
 
   [ ZHANG Yuntian ]
