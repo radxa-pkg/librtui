@@ -54,15 +54,23 @@ __test_show_once() {
 
 __test_checklist() {
 	checklist_init
-	checklist_add "Item 1" "OFF"
-	checklist_add "Item 2" "ON"
-	checklist_add "Item 3" "OFF"
+	checklist_add "Item 1" "OFF" "Value 1"
+	checklist_add "Item 2" "ON" "Value 1"
+	checklist_add "Item 3" "OFF" "Value 1"
 	if checklist_show "Checklist"; then
-		local selection="'${RTUI_CHECKLIST_STATE_NEW[*]}'"
+		local titles=() values=() selection="'${RTUI_CHECKLIST_STATE_NEW[*]}'"
+		for i in "${RTUI_CHECKLIST_STATE_NEW[@]}"
+		do
+			titles+=("$(checklist_gettitle "$i")")
+			values+=("$(checklist_getitem "$i")")
+		done
+
 		if checklist_is_selection_empty; then
 			selection="nothing"
 		fi
-		msgbox "Offered '${RTUI_CHECKLIST_STATE_OLD[*]}', selected $selection."
+		msgbox "Offered '${RTUI_CHECKLIST_STATE_OLD[*]}', selected $selection.
+Titles: '${titles[*]}'
+Values: '${values[*]}'"
 	else
 		msgbox "User cancelled action."
 	fi
