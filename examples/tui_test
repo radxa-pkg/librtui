@@ -68,8 +68,9 @@ __test_checklist() {
 		if checklist_is_selection_empty; then
 			selection="nothing"
 		fi
-		msgbox "Offered '${RTUI_CHECKLIST_STATE_OLD[*]}', selected $selection,
-selected items title '${titles[*]}', selected items value '${values[*]}'"
+		msgbox "Offered '${RTUI_CHECKLIST_STATE_OLD[*]}', selected $selection.
+Titles: '${titles[*]}'
+Values: '${values[*]}'"
 	else
 		msgbox "User cancelled action."
 	fi
