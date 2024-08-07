@@ -54,6 +54,12 @@ checklist_getitem() {
 	echo "${RTUI_CHECKLIST_VALUE[${1//\"/}]}"
 }
 
+checklist_gettitle() {
+	__parameter_count_check 1 "$@"
+
+	echo "${RTUI_CHECKLIST[${i//\"/}*3+1]}"
+}
+
 checklist_emptymsg() {
 	__parameter_count_check 1 "$@"
 
