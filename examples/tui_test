@@ -60,10 +60,10 @@ __test_checklist() {
 	if checklist_show "Checklist"; then
 		local titles=() values=() selection="'${RTUI_CHECKLIST_STATE_NEW[*]}'"
 		for i in "${RTUI_CHECKLIST_STATE_NEW[@]}"
-        do
-            titles+=("$(checklist_gettitle "$i")")
-            values+=("$(checklist_getitem "$i")")
-        done
+		do
+			titles+=("$(checklist_gettitle "$i")")
+			values+=("$(checklist_getitem "$i")")
+		done
 
 		if checklist_is_selection_empty; then
 			selection="nothing"
