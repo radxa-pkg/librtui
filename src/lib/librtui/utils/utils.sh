@@ -111,6 +111,13 @@ __parameter_type_check() {
 	fi
 }
 
+__array_to_ordered_text() {
+	__require_parameter_check "$@"
+	for i in "$@"; do
+		echo "$i"
+	done | sort
+}
+
 __in_array() {
 	local item="$1" i=0
 	shift
