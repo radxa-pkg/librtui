@@ -22,7 +22,7 @@ checklist_add() {
 	RTUI_CHECKLIST_VALUE+=("$value")
 
 	if [[ $status == "ON" ]]; then
-		RTUI_CHECKLIST_STATE_OLD+=("$tag")
+		RTUI_CHECKLIST_STATE_OLD+=("\"$tag\"")
 	fi
 }
 
