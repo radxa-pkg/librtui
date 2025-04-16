@@ -15,6 +15,9 @@ fi
 if [[ -z ${ERROR_REQUIRE_TARGET+SET} ]]; then
 	readonly ERROR_REQUIRE_TARGET=-5
 fi
+if [[ -z ${ERROR_NOT_IMPLEMENTED+SET} ]]; then
+	readonly ERROR_NOT_IMPLEMENTED=-6
+fi
 
 __require_parameter_check() {
 	if (($# == 0)); then
