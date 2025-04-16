@@ -1,3 +1,13 @@
+librtui (0.2.0) jammy; urgency=medium
+
+  [ ZHANG Yuntian ]
+  * feat: add ERROR_NOT_IMPLEMENTED
+  * fix: make old state the same format as the new state
+  * feat: add __array_to_ordered_text for array comparison
+  * fix: adjust make dch's argument order
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Wed, 16 Apr 2025 11:18:15 +0800
+
 librtui (0.1.6) jammy; urgency=medium
 
   [ CodeChenL ]
