@@ -13,6 +13,8 @@ source "$RTUI_DIR/dialog/radiolist.sh"
 source "$RTUI_DIR/dialog/select.sh"
 # shellcheck source=src/dialog/modal_dialog.sh
 source "$RTUI_DIR/dialog/modal_dialog.sh"
+# shellcheck source=src/dialog/wizard.sh
+source "$RTUI_DIR/dialog/wizard.sh"
 
 # shellcheck source=src/utils/utils.sh
 source "$RTUI_DIR/utils/utils.sh"

@@ -153,6 +153,25 @@ __test_custom_menu() {
 	done
 }
 
+__test_wizard() {
+	wizard_init
+
+	while true; do
+		menu_init
+		menu_add __test_menu_select_handler "A"
+		menu_add __test_menu_select_handler "B"
+		menu_add __test_menu_select_handler "C"
+		wizard_call "Wizard test"
+		if menu_is_cancelled; then
+			msgbox "Wizard cancelled."
+			return
+		elif wizard_is_complete; then
+			msgbox "Wizard complete."
+			return
+		fi
+	done
+}
+
 __test() {
 	menu_init
 	menu_add __test_menu "menu"
@@ -175,6 +194,8 @@ __test() {
 	menu_add __test_dselect "dselect"
 	menu_add_separator
 	menu_add __test_color_picker "color_picker"
+	menu_add_separator
+	menu_add __test_wizard "wizard"
 	menu_show "TUI tests"
 }
 
