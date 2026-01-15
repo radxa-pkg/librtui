@@ -1,3 +1,17 @@
+librtui (0.2.1) jammy; urgency=medium
+
+  [ CodeChenL ]
+  * feat: add pkg.conf.template
+
+  [ ZHANG Yuntian ]
+  * fix: clean up leftover metafiles
+  * docs: add high level description
+  * feat: identify menu error reason
+  * feat: support wizard
+  * fix: propulate bind mount dir
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Thu, 15 Jan 2026 07:54:27 +0000
+
 librtui (0.2.0) jammy; urgency=medium
 
   [ ZHANG Yuntian ]
