@@ -123,7 +123,7 @@ __test_color_picker() {
 }
 
 __test_menu_select_handler() {
-	msgbox "You selected '$RTUI_MENU_SELECTED', index = $RTUI_MENU_SELECTED_INDEX."
+	yesno "You selected '$RTUI_MENU_SELECTED', index = $RTUI_MENU_SELECTED_INDEX."
 }
 
 __test_menu() {
@@ -143,7 +143,11 @@ __test_custom_menu() {
 		if menu_call "Custom menu tests"; then
 			msgbox "Menu selected, and callback processed."
 		else
-			msgbox "Menu cancelled."
+			if menu_is_cancelled; then
+				msgbox "Menu cancelled."
+			else
+				msgbox "Menu encountered an error during callback."
+			fi
 			break
 		fi
 	done

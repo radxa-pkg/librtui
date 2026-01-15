@@ -48,6 +48,8 @@ menu_show() {
 	__parameter_count_check 1 "$@"
 
 	local item="0"
+	RTUI_MENU_SELECTED=
+	RTUI_MENU_SELECTED_INDEX=
 	if ((${#RTUI_MENU_CALLBACK[@]} == 1)); then
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
 		RTUI_MENU_SELECTED_INDEX="$item"
@@ -63,6 +65,8 @@ menu_call() {
 	__parameter_count_check 1 "$@"
 
 	local item
+	RTUI_MENU_SELECTED=
+	RTUI_MENU_SELECTED_INDEX=
 	if item="$(__dialog --menu "$1" "${RTUI_MENU[@]}")"; then
 		RTUI_MENU_SELECTED="$(menu_getitem "$item")"
 		RTUI_MENU_SELECTED_INDEX="$item"
@@ -70,4 +74,10 @@ menu_call() {
 	else
 		return 1
 	fi
+}
+
+menu_is_cancelled() {
+	__parameter_count_check 0 "$@"
+
+	[[ -z $RTUI_MENU_SELECTED_INDEX ]]
 }
