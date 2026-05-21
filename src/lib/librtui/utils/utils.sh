@@ -215,7 +215,7 @@ __check_terminal() {
 			disable_stderr=
 		fi
 
-		if output="$(eval "stty size -F '$i' $disable_stderr")"; then
+		if output="$(eval "stty -F '$i' size $disable_stderr")"; then
 			echo "$output"
 			return
 		fi
