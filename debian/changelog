@@ -1,3 +1,11 @@
+librtui (0.2.2) jammy; urgency=medium
+
+  [ ZHANG Yuntian ]
+  * Update pkg.conf.template
+  * fix: uutils has incompatible stty
+
+ -- "Radxa Computer Co., Ltd" <dev@radxa.com>  Fri, 22 May 2026 03:55:48 +0000
+
 librtui (0.2.1) jammy; urgency=medium
 
   [ CodeChenL ]
